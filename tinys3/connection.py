@@ -136,7 +136,7 @@ class Base(object):
               for the file (using the mimetypes lib)
 
             - public        (Optional) If set to true, tinys3 will set the file
-              to be publicly available using the acl headers. Defaults to True.
+              to be publicly available using the acl headers. Defaults to False.
 
             - headers       (Optional) Allows you to specify extra headers for
               the request using a dict.
@@ -186,7 +186,7 @@ class Base(object):
               metadata. if not defined, tinys3 will copy the source key's
               metadata.
             - public        (Optional) Same as upload, should the new key be
-              publicly accessible? Default to True.
+              publicly accessible? Default to False.
 
         Returns:
             - A response object from the requests lib or a future that wraps
@@ -212,7 +212,7 @@ class Base(object):
             - key           The key to update
             - metadata      (Optional) The metadata dict to set for the key
             - public        (Optional) Same as upload, should the key be
-              publicly accessible? Default to True.
+              publicly accessible? Default to False.
 
         Returns:
             - A response object from the requests lib or a future that wraps
