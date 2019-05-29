@@ -282,7 +282,7 @@ class HeadRequest(S3Request):
 
 class UploadRequest(S3Request):
     def __init__(self, conn, key, local_file, bucket, expires=None,
-                 content_type=None, public=True, extra_headers=None,
+                 content_type=None, public=False, extra_headers=None,
                  close=False, rewind=True):
         """
         :param conn:
@@ -452,7 +452,7 @@ class CancelUploadRequest(S3Request):
 class CopyRequest(S3Request):
 
     def __init__(self, conn, from_key, from_bucket, to_key, to_bucket,
-                 metadata=None, public=True):
+                 metadata=None, public=False):
         super(CopyRequest, self).__init__(conn)
         # stringify + quote combo is to correctly manage Unicode filenames
         # (they must be encoded like within an URL)
@@ -484,7 +484,7 @@ class CopyRequest(S3Request):
 
 
 class UpdateMetadataRequest(CopyRequest):
-    def __init__(self, conn, key, bucket, metadata=None, public=True):
+    def __init__(self, conn, key, bucket, metadata=None, public=False):
         super(UpdateMetadataRequest, self).__init__(conn, key, bucket, key,
                                                     bucket, metadata=metadata,
                                                     public=public)
